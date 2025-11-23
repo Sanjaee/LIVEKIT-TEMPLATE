@@ -28,7 +28,7 @@ var (
 )
 
 func main() {
-	livekitURL = getEnv("LIVEKIT_URL", "ws://localhost:7880")
+	livekitURL = getEnv("LIVEKIT_URL", "ws://8.215.196.12:7880")
 	apiKey = getEnv("LIVEKIT_API_KEY", "devkey")
 	apiSecret = getEnv("LIVEKIT_API_SECRET", "secret")
 
