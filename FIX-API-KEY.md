@@ -95,13 +95,13 @@ keys:
 ### Check docker-compose.yml
 ```yaml
 environment:
-  - LIVEKIT_API_KEY=devkey  ✅
+  - LIVEKIT_API_KEY=6RfzN3B2Lqj8vzdP9XC4tFkp57YhUBsM  ✅
   - LIVEKIT_API_SECRET=LK09asd9A99asd0ASD09asd09as0d9ASD09asd0ASD09asdASD99  ✅
 ```
 
 ### Check backend/main.go
 ```go
-apiKey = getEnv("LIVEKIT_API_KEY", "devkey")  ✅
+apiKey = getEnv("LIVEKIT_API_KEY", "6RfzN3B2Lqj8vzdP9XC4tFkp57YhUBsM")  ✅
 apiSecret = getEnv("LIVEKIT_API_SECRET", "LK09asd9A99asd0ASD09asd09as0d9ASD09asd0ASD09asdASD99")  ✅
 ```
 
