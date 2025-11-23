@@ -5,7 +5,7 @@ rtc:
   use_external_ip: false
   
 keys:
-  devkey: secret
+  devkey: LK09asd9A99asd0ASD09asd09as0d9ASD09asd0ASD09asdASD99
 
 logging:
   level: info

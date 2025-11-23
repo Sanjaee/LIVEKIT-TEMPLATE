@@ -29,8 +29,8 @@ var (
 
 func main() {
 	livekitURL = getEnv("LIVEKIT_URL", "wss://zoom.zascript.com")
-	apiKey = getEnv("LIVEKIT_API_KEY", "devkey")
-	apiSecret = getEnv("LIVEKIT_API_SECRET", "secret")
+	apiKey = getEnv("LIVEKIT_API_KEY", "LK09asd9A99asd0ASD09asd09as0d9ASD09asd0ASD09asdASD99")
+	apiSecret = getEnv("LIVEKIT_API_SECRET", "LK09asd9A99asd0ASD09asd09as0d9ASD09asd0ASD09asdASD99")
 
 	r := mux.NewRouter()
 
