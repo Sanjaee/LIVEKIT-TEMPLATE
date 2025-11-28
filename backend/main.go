@@ -28,7 +28,7 @@ var (
 )
 
 func main() {
-	livekitURL = getEnv("LIVEKIT_URL", "wss://zoom.zascript.com")
+	livekitURL = getEnv("LIVEKIT_URL", "wss://zoom.zacloth.com")
 	apiKey = getEnv("LIVEKIT_API_KEY", "devkey")
 	apiSecret = getEnv("LIVEKIT_API_SECRET", "6RfzN3B2Lqj8vzdP9XC4tFkp57YhUBsM")
 
