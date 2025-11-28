@@ -75,7 +75,7 @@ docker compose exec backend env | grep LIVEKIT
 
 ```bash
 # Test token generation
-curl -X POST https://zoom.zacloth.com/api/token \
+curl -X POST https://zoom..com/api/token \
   -H "Content-Type: application/json" \
   -d '{"roomName":"test","username":"test"}'
 
