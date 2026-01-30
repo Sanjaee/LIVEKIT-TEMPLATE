@@ -20,7 +20,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - LIVEKIT_URL=wss://zoom.zacloth.com/rtc
+      - LIVEKIT_URL=wss://zoom.zascript.com/rtc
       - LIVEKIT_API_KEY=devkey
       - LIVEKIT_API_SECRET=6RfzN3B2Lqj8vzdP9XC4tFkp57YhUBsM
     depends_on:

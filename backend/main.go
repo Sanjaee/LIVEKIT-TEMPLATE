@@ -28,7 +28,7 @@ var (
 )
 
 func main() {
-	livekitURL = getEnv("LIVEKIT_URL", "wss://zoom.zacloth.com/rtc")
+	livekitURL = getEnv("LIVEKIT_URL", "wss://zoom.zascript.com/rtc")
 	apiKey = getEnv("LIVEKIT_API_KEY", "devkey")
 	apiSecret = getEnv("LIVEKIT_API_SECRET", "6RfzN3B2Lqj8vzdP9XC4tFkp57YhUBsM")
 
@@ -45,6 +45,11 @@ func main() {
 }
 
 func getTokenHandler(w http.ResponseWriter, r *http.Request) {
+	// OPTIONS requests are handled by CORS middleware
+	if r.Method == "OPTIONS" {
+		return
+	}
+
 	var req JoinRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, "Invalid request", http.StatusBadRequest)
@@ -89,9 +94,37 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 
 func corsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		origin := r.Header.Get("Origin")
+
+		// Allowed origins
+		allowedOrigins := []string{
+			"https://zoom.zascript.com",
+			"https://zoom.zacloth.com",
+			"http://localhost:3000",
+			"http://localhost:8080",
+		}
+
+		// Check if origin is allowed
+		allowed := false
+		for _, allowedOrigin := range allowedOrigins {
+			if origin == allowedOrigin {
+				allowed = true
+				break
+			}
+		}
+
+		// Set CORS headers
+		if allowed && origin != "" {
+			w.Header().Set("Access-Control-Allow-Origin", origin)
+			w.Header().Set("Access-Control-Allow-Credentials", "true")
+		} else {
+			// Fallback to wildcard if no origin or not in allowed list
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+		}
+
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With, Accept")
+		w.Header().Set("Access-Control-Max-Age", "3600")
 
 		if r.Method == "OPTIONS" {
 			w.WriteHeader(http.StatusOK)
