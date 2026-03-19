@@ -28,7 +28,7 @@ var (
 )
 
 func main() {
-	livekitURL = getEnv("LIVEKIT_URL", "wss://zoom.zascript.com/rtc")
+	livekitURL = getEnv("LIVEKIT_URL", "wss://zacode.web.id/rtc")
 	apiKey = getEnv("LIVEKIT_API_KEY", "devkey")
 	apiSecret = getEnv("LIVEKIT_API_SECRET", "6RfzN3B2Lqj8vzdP9XC4tFkp57YhUBsM")
 
@@ -98,7 +98,7 @@ func corsMiddleware(next http.Handler) http.Handler {
 
 		// Allowed origins
 		allowedOrigins := []string{
-			"https://zoom.zascript.com",
+			"https://zacode.web.id/",
 			"https://zoom.zacloth.com",
 			"http://localhost:3000",
 			"http://localhost:8080",
